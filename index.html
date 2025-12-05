@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PUJO DEV QR Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --accent: #7c3aed; /* purple */
+      --bg: #0f172a;
+      --card: #0b1220;
+    }
+    body { background: linear-gradient(180deg, #071128 0%, #00121a 100%); color: #e6edf3; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+  <div class="max-w-4xl w-full space-y-6">
+    <header class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-extrabold">PUJO DEV <span class="text-[var(--accent)]">QR Generator</span></h1>
+        <p class="text-sm text-slate-400">Developer: @FoundCount • Channel: PUJODIVED</p>
+      </div>
+      <div class="text-right">
+        <button id="refreshList" class="px-3 py-2 bg-[var(--accent)] rounded text-white text-sm">Refresh</button>
+      </div>
+    </header>
+
+    <main class="grid md:grid-cols-2 gap-6">
+      <section class="p-6 rounded-2xl" style="background: rgba(255,255,255,0.02)">
+        <h2 class="font-semibold text-lg">Generate QR</h2>
+        <div class="mt-4 space-y-3">
+          <input id="urlInput" type="text" placeholder="https://example.com" class="w-full p-3 rounded bg-black/40 outline-none" />
+          <input id="watermarkInput" type="text" placeholder="Advanced watermark (optional)" class="w-full p-3 rounded bg-black/40 outline-none" />
+          <div class="flex gap-3">
+            <button id="btnBasic" class="flex-1 py-2 rounded bg-slate-800 hover:bg-slate-700">Generate Basic</button>
+            <button id="btnAdvanced" class="flex-1 py-2 rounded bg-[var(--accent)] text-white hover:opacity-90">Generate Advanced</button>
+          </div>
+        </div>
+
+        <div id="result" class="mt-4"></div>
+      </section>
+
+      <section class="p-6 rounded-2xl" style="background: rgba(255,255,255,0.02)">
+        <h2 class="font-semibold text-lg">History & Actions</h2>
+        <p class="text-sm text-slate-400">Saved QR images are stored locally on the server.</p>
+
+        <div id="history" class="mt-4 space-y-3 max-h-[48vh] overflow-auto"></div>
+      </section>
+    </main>
+
+    <footer class="text-center text-sm text-slate-400">
+      <span>Made with ❤️ by PUJO DEV • <span id="serverStatus">Checking server...</span></span>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
